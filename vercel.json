@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/scadenze/cleanup",
+      "schedule": "0 2 * * *"
+    }
+  ]
+}

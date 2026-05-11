@@ -1,0 +1,74 @@
+import { NextResponse, type NextRequest } from 'next/server'
+import { createServerClient, type CookieOptions } from '@supabase/ssr'
+
+export async function middleware(request: NextRequest) {
+  let supabaseResponse = NextResponse.next({
+    request: { headers: request.headers },
+  })
+
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        get(name: string) {
+          return request.cookies.get(name)?.value
+        },
+        set(name: string, value: string, options: CookieOptions) {
+          request.cookies.set({ name, value, ...options })
+          supabaseResponse = NextResponse.next({ request: { headers: request.headers } })
+          supabaseResponse.cookies.set({ name, value, ...options })
+        },
+        remove(name: string, options: CookieOptions) {
+          request.cookies.set({ name, value: '', ...options })
+          supabaseResponse = NextResponse.next({ request: { headers: request.headers } })
+          supabaseResponse.cookies.set({ name, value: '', ...options })
+        },
+      },
+    }
+  )
+
+  const { data: { user } } = await supabase.auth.getUser()
+
+  const pathname = request.nextUrl.pathname
+
+  // Rotte pubbliche — accessibili senza autenticazione
+  const publicPaths = [
+    '/',
+    '/login',
+    '/signup',
+    '/forgot-password',
+    '/reset-password',
+    '/api/auth',
+    '/api/stripe/webhook',
+    '/_next',
+    '/favicon.ico',
+  ]
+
+  const isPublic = publicPaths.some(p => pathname === p || pathname.startsWith(p + '/'))
+
+  if (!user && !isPublic) {
+    // Le API routes ricevono JSON 401, le pagine ricevono redirect a /login
+    if (pathname.startsWith('/api/')) {
+      return NextResponse.json({ error: 'Non autenticato' }, { status: 401 })
+    }
+    const url = request.nextUrl.clone()
+    url.pathname = '/login'
+    return NextResponse.redirect(url)
+  }
+
+  // Utente autenticato che accede a login/signup → redirect alla dashboard
+  if (user && (pathname === '/login' || pathname === '/signup')) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/dashboard'
+    return NextResponse.redirect(url)
+  }
+
+  return supabaseResponse
+}
+
+export const config = {
+  matcher: [
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+  ],
+}
