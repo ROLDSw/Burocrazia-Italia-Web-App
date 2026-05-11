@@ -91,10 +91,11 @@ function ProfileTab() {
 
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
+          <label htmlFor="settings-username" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
             Username <span className="text-slate-400 font-normal">— visibile in alto a destra e nei saluti</span>
           </label>
           <input
+            id="settings-username"
             type="text"
             value={username}
             onChange={e => setUsername(e.target.value)}
@@ -103,8 +104,9 @@ function ProfileTab() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">Email</label>
+          <label htmlFor="settings-email" className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">Email</label>
           <input
+            id="settings-email"
             type="email"
             disabled
             value={email}
