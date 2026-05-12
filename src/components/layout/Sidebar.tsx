@@ -30,7 +30,7 @@ export function Sidebar({ onClose }: SidebarProps) {
   const pathname = usePathname()
 
   return (
-    <div className="flex h-full w-64 flex-col bg-white dark:bg-[#020617] border-r border-slate-200 dark:border-white/10 shadow-2xl">
+    <div className="flex h-full w-64 flex-col bg-[#ffffff] dark:bg-[#020617] border-r border-slate-200 dark:border-white/10 shadow-2xl">
       <Link
         href="/dashboard"
         className="flex h-16 shrink-0 items-center px-6 border-b border-slate-200 dark:border-gray-800 hover:opacity-90 transition-opacity group"
