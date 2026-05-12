@@ -56,7 +56,7 @@ export function Sidebar({ onClose }: SidebarProps) {
                 className={cn(
                   isActive
                     ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/25'
-                    : 'text-black hover:bg-slate-100 hover:text-indigo-600 dark:text-slate-100 dark:hover:bg-slate-800 dark:hover:text-white',
+                    : 'text-slate-800 hover:bg-slate-100 hover:text-indigo-600 dark:text-slate-100 dark:hover:bg-slate-800 dark:hover:text-white',
                   'group flex items-center rounded-xl px-4 py-3 text-sm font-bold transition-all duration-200'
                 )}
               >
@@ -64,7 +64,7 @@ export function Sidebar({ onClose }: SidebarProps) {
                   className={cn(
                     isActive
                       ? 'text-white'
-                      : 'text-black/70 group-hover:text-indigo-600 dark:text-slate-400 dark:group-hover:text-white',
+                      : 'text-slate-500 group-hover:text-indigo-600 dark:text-slate-400 dark:group-hover:text-white',
                     'mr-3 h-5 w-5 flex-shrink-0 transition-colors'
                   )}
                   aria-hidden="true"
@@ -78,9 +78,9 @@ export function Sidebar({ onClose }: SidebarProps) {
       <div className="border-t border-slate-200 p-3 dark:border-gray-800">
         <Link
           href="/settings"
-          className="group flex items-center rounded-xl px-4 py-3 text-sm font-bold text-black hover:bg-slate-100 hover:text-indigo-600 dark:text-slate-100 dark:hover:bg-slate-800 dark:hover:text-white transition-all duration-200"
+          className="group flex items-center rounded-xl px-4 py-3 text-sm font-bold text-slate-800 hover:bg-slate-100 hover:text-indigo-600 dark:text-slate-100 dark:hover:bg-slate-800 dark:hover:text-white transition-all duration-200"
         >
-          <Settings className="mr-3 h-5 w-5 flex-shrink-0 text-black/70 group-hover:text-indigo-600 dark:text-slate-400 dark:group-hover:text-white transition-colors" />
+          <Settings className="mr-3 h-5 w-5 flex-shrink-0 text-slate-500 group-hover:text-indigo-600 dark:text-slate-400 dark:group-hover:text-white transition-colors" />
           Impostazioni
         </Link>
       </div>
