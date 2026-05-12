@@ -281,6 +281,9 @@ export function Header({ toggleSidebar, isSidebarOpen = true }: HeaderProps) {
             <DropdownMenuItem asChild>
               <Link href="/settings?tab=notifications" className="w-full">Gestione Notifiche</Link>
             </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/settings?tab=appearance" className="w-full">Aspetto & Tema</Link>
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
               <button

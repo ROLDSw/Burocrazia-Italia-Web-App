@@ -1,0 +1,54 @@
+Retrieving project…
+Deploying roland-prodorutti-s-projects/burocrazia-italia-web-app
+Uploading [--------------------] (0.0B/87B)
+Uploading [====================] (87.0B/87B)
+Inspect: https://vercel.com/roland-prodorutti-s-projects/burocrazia-italia-web-app/9ZJi5NUYAWo897arbJfJHmAG7DEi [2s]
+Production: https://burocrazia-italia-web-5yitg04oc-roland-prodorutti-s-projects.vercel.app [2s]
+https://burocrazia-italia-web-5yitg04oc-roland-prodorutti-s-projects.vercel.appBuilding...
+Building: Running build in Washington, D.C., USA (East) – iad1
+Building: Build machine configuration: 2 cores, 8 GB
+Building: Retrieving list of deployment files...
+Building: Previous build caches not available.
+Building: Previous build caches not available.
+Building: Downloading 105 deployment files...
+Building: Running "vercel build"
+Building: Vercel CLI 53.3.2
+Building: Installing dependencies...
+Building: added 430 packages in 19s
+Building: 144 packages are looking for funding
+Building: run `npm fund` for details
+Building: Detected Next.js version: 16.2.6
+Building: Running "npm run build"
+Building: > web-app2@0.1.0 build
+Building: > next build
+Building: Applying modifyConfig from Vercel
+Building: Attention: Next.js now collects completely anonymous telemetry regarding usage.
+Building: This information is used to shape Next.js' roadmap and prioritize features.
+Building: You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+Building: https://nextjs.org/telemetry
+Building: ▲ Next.js 16.2.6 (Turbopack)
+Building: ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+Building: Creating an optimized production build ...
+Building: ✓ Compiled successfully in 14.1s
+Building: Running TypeScript ...
+Building: Finished TypeScript in 8.9s ...
+Building: Collecting page data using 1 worker ...
+Building: Error: [env] Variabili d'ambiente obbligatorie mancanti: NEXT_PUBLIC_APP_URL
+Building: Configura queste variabili in .env.local prima di avviare l'app.
+Building: at module evaluation (.next/server/chunks/[root-of-the-server]__0g1-_nd._.js:1:629)
+Building: at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:853:9)
+Building: at getOrInstantiateModuleFromParent (.next/server/chunks/[turbopack]_runtime.js:877:12)
+Building: at Context.esmImport [as i] (.next/server/chunks/[turbopack]_runtime.js:281:20)
+Building: at module evaluation (.next/server/chunks/[root-of-the-server]__0g1-_nd._.js:3:191839)
+Building: at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:853:9)
+Building: at getOrInstantiateModuleFromParent (.next/server/chunks/[turbopack]_runtime.js:877:12)
+Building: at Context.esmImport [as i] (.next/server/chunks/[turbopack]_runtime.js:281:20)
+Building: at module evaluation (.next/server/chunks/[root-of-the-server]__0bbgvb3._.js:1:1294)
+Building: at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:853:9)
+Building: > Build error occurred
+Building: Error: Failed to collect page data for /api/stripe/checkout
+Building: at ignore-listed frames {
+Building: type: 'Error'
+Building: }
+Building: Error: Command "npm run build" exited with 1
+Error: Command "npm run build" exited with 1

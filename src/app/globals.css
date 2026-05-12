@@ -20,25 +20,25 @@
     --background: transparent;
     --foreground: #0f172a;
     
-    --card: rgba(255, 255, 255, 0.9);
+    --card: rgba(255, 255, 255, 0.8);
     --card-foreground: #0f172a;
-    --border: rgba(203, 213, 225, 0.7);
+    --border: rgba(203, 213, 225, 0.5);
     
     /* Softer neomorphic shadows for a cleaner look */
-    --shadow-neo: 10px 10px 30px rgba(148, 163, 184, 0.15), -10px -10px 30px rgba(255, 255, 255, 0.8);
-    --shadow-neo-sm: 5px 5px 15px rgba(148, 163, 184, 0.12), -5px -5px 15px rgba(255, 255, 255, 0.8);
+    --shadow-neo: 10px 10px 30px rgba(148, 163, 184, 0.1), -10px -10px 30px rgba(255, 255, 255, 0.7);
+    --shadow-neo-sm: 5px 5px 15px rgba(148, 163, 184, 0.08), -5px -5px 15px rgba(255, 255, 255, 0.7);
   }
 
   .dark {
     --background: transparent;
     --foreground: #f8fafc;
     
-    --card: rgba(23, 31, 51, 0.85);
+    --card: rgba(15, 23, 42, 0.8);
     --card-foreground: #f8fafc;
-    --border: rgba(51, 65, 85, 0.6);
+    --border: rgba(30, 41, 59, 0.5);
     
-    --shadow-neo: 15px 15px 40px rgba(0, 0, 0, 0.6), -10px -10px 30px rgba(255, 255, 255, 0.04);
-    --shadow-neo-sm: 8px 8px 20px rgba(0, 0, 0, 0.5), -8px -8px 20px rgba(255, 255, 255, 0.02);
+    --shadow-neo: 15px 15px 40px rgba(0, 0, 0, 0.4), -10px -10px 30px rgba(255, 255, 255, 0.02);
+    --shadow-neo-sm: 8px 8px 20px rgba(0, 0, 0, 0.3), -8px -8px 20px rgba(255, 255, 255, 0.01);
   }
 }
 
@@ -56,5 +56,6 @@
     background-color: var(--background);
     color: var(--foreground);
     min-height: 100vh;
+    transition: background-color 0.5s ease, color 0.5s ease;
   }
 }

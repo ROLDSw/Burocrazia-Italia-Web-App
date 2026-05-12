@@ -1,7 +1,8 @@
 'use client'
 
 import { useSearchParams, useRouter } from 'next/navigation'
-import { User, CreditCard, Bell, Save, ExternalLink, CheckCircle, AlertTriangle, XCircle } from 'lucide-react'
+import { User, CreditCard, Bell, Save, ExternalLink, CheckCircle, AlertTriangle, XCircle, Monitor, Sun, Moon } from 'lucide-react'
+import { useTheme } from 'next-themes'
 import { Suspense, useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { supabase } from '@/lib/supabase'
@@ -435,6 +436,82 @@ function NotificationsTab() {
   )
 }
 
+// ── Tab Aspetto ──────────────────────────────────────────────────────────────
+
+function AppearanceTab() {
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
+
+  const options = [
+    { id: 'light', label: 'Chiaro', icon: Sun, desc: 'Interfaccia pulita e luminosa.' },
+    { id: 'dark', label: 'Scuro', icon: Moon, desc: 'Riduce l\'affaticamento visivo in ambienti bui.' },
+    { id: 'system', label: 'Sistema', icon: Monitor, desc: 'Si adatta automaticamente alle impostazioni del tuo dispositivo.' },
+  ]
+
+  return (
+    <div className="bg-white dark:bg-gray-900 rounded-[2rem] p-6 shadow-sm border border-slate-200 dark:border-gray-800">
+      <div className="flex items-center gap-4 mb-6">
+        <div className="p-3 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-xl">
+          <Monitor className="w-6 h-6" />
+        </div>
+        <div>
+          <h2 className="text-lg font-semibold text-slate-900 dark:text-white">Aspetto</h2>
+          <p className="text-sm text-slate-500 dark:text-gray-400">Personalizza il tema dell'applicazione.</p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {options.map((opt) => {
+          const isActive = theme === opt.id
+          return (
+            <button
+              key={opt.id}
+              onClick={() => setTheme(opt.id)}
+              className={cn(
+                'relative flex flex-col items-center gap-3 p-6 rounded-2xl border-2 transition-all group',
+                isActive
+                  ? 'border-indigo-600 bg-indigo-50/50 dark:bg-indigo-900/10'
+                  : 'border-slate-100 dark:border-gray-800 bg-white dark:bg-gray-900 hover:border-slate-200 dark:hover:border-gray-700'
+              )}
+            >
+              <div className={cn(
+                'p-3 rounded-xl transition-colors',
+                isActive
+                  ? 'bg-indigo-600 text-white'
+                  : 'bg-slate-100 dark:bg-gray-800 text-slate-500 dark:text-gray-400 group-hover:bg-slate-200 dark:group-hover:bg-gray-700'
+              )}>
+                <opt.icon className="w-6 h-6" />
+              </div>
+              <div className="text-center">
+                <p className={cn(
+                  'font-semibold text-sm',
+                  isActive ? 'text-slate-900 dark:text-white' : 'text-slate-600 dark:text-gray-400'
+                )}>
+                  {opt.label}
+                </p>
+                <p className="text-xs text-slate-400 dark:text-gray-500 mt-1">
+                  {opt.desc}
+                </p>
+              </div>
+              {isActive && (
+                <div className="absolute top-2 right-2">
+                  <CheckCircle className="w-4 h-4 text-indigo-600" />
+                </div>
+              )}
+            </button>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
 // ── Pagina principale ──────────────────────────────────────────────────────────
 
 function SettingsContent() {
@@ -446,6 +523,7 @@ function SettingsContent() {
     { id: 'profile', label: 'Profilo', icon: User },
     { id: 'billing', label: 'Fatturazione', icon: CreditCard },
     { id: 'notifications', label: 'Notifiche', icon: Bell },
+    { id: 'appearance', label: 'Aspetto', icon: Monitor },
   ]
 
   return (
@@ -477,6 +555,7 @@ function SettingsContent() {
         {activeTab === 'profile'       && <ProfileTab />}
         {activeTab === 'billing'       && <BillingTab />}
         {activeTab === 'notifications' && <NotificationsTab />}
+        {activeTab === 'appearance'    && <AppearanceTab />}
       </div>
     </div>
   )
